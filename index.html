@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./w3.css">
+    <title>Github Profiles</title>
+  <style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style>
+</head>
+<body>
+  <div class="w3-container">
+    <p>Search for a Repo name in the input field.</p>
+  
+    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for Repo.." id="myInput" onkeyup="myFunction()">
+  
+    <table class="w3-table w3-margin-top" id="myTable">
+      <thead>
+        <tr>
+          <th style="width:20%;">REPO</th>
+          <th style="width:15%;">Name</th>
+          <th style="width:10%;">Bio</th>
+          <th style="width:10%;">followers</th>
+          <th style="width:10%;">following</th>
+          <th style="width:10%;">public_repos</th>
+          <th style="width:10%;">IMG</th>
+        </tr>
+      </thead>
+      <tbody id="data">
+      </tbody>
+    </table>
+  
+  </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
