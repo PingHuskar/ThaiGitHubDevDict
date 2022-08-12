@@ -4,27 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./w3.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/w3.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Github Profiles</title>
-  <style type="text/css">@font-face { font-family: Roboto; src: url("chrome-extension://mcgbeeipkmelnpldkobichboakdfaeon/css/Roboto-Regular.ttf"); }</style>
 </head>
 <body>
   <div class="w3-container">
     <p>Search for a Repo name in the input field.</p>
   
-    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for Repo.." id="myInput" onkeyup="myFunction()">
+    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for Repo.." id="myInput" onkeyup="myFunction()" autocomplete autofocus>
   
     <table class="w3-table w3-margin-top" id="myTable">
       <thead>
         <tr>
-          <th style="width:20%;">REPO</th>
-          <th style="width:15%;">Name</th>
-          <th style="width:10%;">Bio</th>
-          <th style="width:10%;">followers</th>
-          <th style="width:10%;">following</th>
-          <th style="width:10%;">public_repos</th>
-          <th style="width:10%;">IMG</th>
+          <th style="width:3%;">REPO</th>
+          <th style="width:1%;">Name</th>
+          <th style="width:2%;">Bio</th>
+          <th style="width:0%">followers</th>
+          <th style="width:0%">following</th>
+          <th style="width:0%">public_repos</th>
         </tr>
       </thead>
       <tbody id="data">

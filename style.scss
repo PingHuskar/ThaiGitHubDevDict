@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+$longdo-map : rgb(83,138,243);
+$css : rgb(38, 77, 228);
+$cssHover : rgb(41, 101, 241);
+$scss : rgb(205, 103, 153);
+$sass : $scss;
+
+$clazy : rgb(1,245,5);
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
+$pythonC1 : rgb( 75, 139, 190);
+$pythonC2 : rgb(255, 232, 115);
 
 body {
   background-color: #2a2a72;
@@ -117,14 +127,64 @@ table {
   align-items: center;
   text-align: center;
   color: #000;
-}
-table thead tr th,table tbody tr td {
-  display: flex;
+  thead {
+    tr {
+        th {
+            border: 3px solid black;
+            text-transform: capitalize;
+        }
+    }
+  }
+  thead tr th, tbody tr td {
+    display: block;
   justify-content: center !important;
   align-items: center !important;
   align-self: center !important;
-  text-align: center !important;
+//   text-align: center !important;
+  flex-flow: column;
+  }
+  tbody {
+    tr {
+        td {
+            border: 3px solid black;
+            #name {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            a {
+                border-radius: 50px;
+                &:hover {
+                    background: $cssHover;
+                }
+            }
+            .js, .javascript {
+                background: rgb(212, 212, 22);
+            }
+            .longdo-map {
+                background: $longdo-map;
+            }
+            .css {
+                background: $css;
+                font-size: 2em !important;
+                &:hover {
+                    font-size: 2em !important;
+                    background: $cssHover;
+                }
+            }
+            .scss,.sass {
+                background: $scss;
+            }
+            .python, .py {
+                background: $pythonC1;
+                color: $pythonC2;
+            }
+        }
+    }
+  }
 }
-/* .w3-container,body {
-  min-height: 100vh;
-} */
