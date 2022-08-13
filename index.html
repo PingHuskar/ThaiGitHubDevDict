@@ -11,19 +11,15 @@
 </head>
 <body>
   <div class="w3-container">
-    <p>Search for a Repo name in the input field.</p>
-  
-    <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for Repo.." id="myInput" onkeyup="myFunction()" autocomplete autofocus>
-  
+    <input class="w3-input w3-border w3-padding mt-4" type="text" placeholder="Search for Repo.." id="myInput" onkeyup="myFunction()" autocomplete autofocus>
+    <div id="foundUser"></div>
     <table class="w3-table w3-margin-top" id="myTable">
       <thead>
         <tr>
-          <th style="width:3%;">REPO</th>
-          <th style="width:1%;">Name</th>
-          <th style="width:2%;">Bio</th>
-          <th style="width:0%">followers</th>
-          <th style="width:0%">following</th>
-          <th style="width:0%">public_repos</th>
+          <th style="width:300px;">Name</th>
+          <th style="width:400px;">REPO</th>
+          <th style="width:400px;">Bio</th>
+          <th style="width:0%">#PublicRepos/followers/following</th>
         </tr>
       </thead>
       <tbody id="data">

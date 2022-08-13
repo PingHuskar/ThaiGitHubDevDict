@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+$bgColor : #2a2a72;
+$avatarHeight : 100px;
+$avatarBorderColor : salmon;
+$defaultRepoColor : rgb(99,99,99);
 $longdo-map : rgb(83,138,243);
 $css : rgb(38, 77, 228);
 $cssHover : rgb(41, 101, 241);
@@ -15,7 +19,7 @@ $pythonC1 : rgb( 75, 139, 190);
 $pythonC2 : rgb(255, 232, 115);
 
 body {
-  background-color: #2a2a72;
+  background-color: $bgColor;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -32,13 +36,13 @@ body {
   max-width: 700px;
 }
 
-.user-form input {
+input {
   width: 100%;
   display: block;
-  background-color: #4c2885;
+  background: $bgColor;
   border: none;
   border-radius: 10px;
-  color: #fff;
+  color: red;
   padding: 1rem;
   margin-bottom: 2rem;
   font-family: inherit;
@@ -64,13 +68,6 @@ body {
   display: flex;
   padding: 3rem;
   margin: 0 1.5rem;
-}
-
-.avatar {
-  border-radius: 50%;
-  border: 5px solid #2a2a72;
-  height: 60px;
-  width: 60px;
 }
 
 .user-info {
@@ -103,7 +100,7 @@ body {
 .repo {
   text-decoration: none;
   color: #fff;
-  background-color: #212a72;
+  background: $defaultRepoColor;
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
   margin-right: 0.5rem;
@@ -143,24 +140,95 @@ table {
 //   text-align: center !important;
   flex-flow: column;
   }
+  thead tr th{
+    background: #14b8a6;
+  }
   tbody {
     tr {
+        .User {
+            // background: #ffffff url("https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png") no-repeat right top;
+            // background-size: 100px 100px;
+            // background: #ffffff url("https://www.w3schools.com/css/img_tree.png") no-repeat right top;
+            // background-position: center;
+            background: #ffffff 
+        }
         td {
             border: 3px solid black;
+            vertical-align: middle !important;
+            justify-content: center;
+                align-items: center;
+                text-align: center;
+
             #name {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                a {
+
+                  .avatar {
+                    border-radius: 50%;
+                    border: 5px dashed $avatarBorderColor;
+                    height: $avatarHeight*2.5;
+                    // pointer-events: none;
+                    transform: scale(0.8);
+                    transition: all .75s ease-in-out;
+                    &:hover {
+                      transform: scale(1.2) rotate(360deg);
+                      // transform: translateX(100vw);
+                      border: 5px solid $avatarBorderColor;
+                    }
+                  }
+                }
             }
             div {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                .sep {
+                  background: #fef3c7;
+                }
             }
-            a {
-                border-radius: 50px;
+            p {
+              &.company {
+                font-size: 3em;
+                background: white;
+              }
+              &.bio {
+                background: white;
+                margin-bottom: 5vh;
+                transition: all .5s ease-in-out;
+                &:hover {
+                    transform: scale(2);
+                    border: 5px solid black;
+                }
+              }
+            }
+            .statsCard, .mostLang {
+              transition: all .35s ease-in-out;
+              &:hover {
+                transform: scale(1.6);
+              }
+            }
+            .otherInfo {
+              transition: all .35s ease-in-out;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+            a.repo {
+                // border-radius: 50px;
+                // background: #2cc1cc;
                 &:hover {
                     background: $cssHover;
+                }
+                img {
+                  // border-radius: 50px;
+                  transition: all .5s ease-in-out;
+                  opacity: 0.8;
+                  &:hover {
+                    transform: scale(2.2);
+                    opacity: 1;
+                  }
                 }
             }
             .js, .javascript {
@@ -187,4 +255,44 @@ table {
         }
     }
   }
+}
+
+#name {
+  position: relative;
+  width: 100%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background: $bgColor;
+  border-radius: 50%;
+}
+
+#name:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

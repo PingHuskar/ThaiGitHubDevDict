@@ -1,18 +1,26 @@
 const APIURL = 'https://api.github.com/users/'
 var user = [
-  "immortalgky",
-  "pinghuskar",
-  "UncleEngineer",
-  "mayanth",
-  "wichaisw",
-  "dtinth",
-  "ohmiler",
-  "rektplorer64",]
-var official = [
-  "BorntoDev",
-  "datacamp"
+    "pinghuskar",
+    "mayanth",
+    "wichaisw",
+    "ohmiler",
+    "rektplorer64"
 ]
-data = [...user,...official]
+var devil = [
+    "UncleEngineer",
+    "dtinth",
+    "immortalgky",
+    "angelabauer",
+]
+var official = [
+    "BorntoDev",
+    "appbrewery",
+    "sitepoint",
+    "PacktPublishing",
+    "oreillymedia",
+    "datacamp"
+]
+data = [...user,...devil,...official]
 data = [...new Set(data)]
 data.map(getUser)
 // getUser(user)
@@ -45,47 +53,72 @@ function addReposToCard(repos,username) {
   // var rep = ""
   repos
       // .slice(0, 30)
-      .slice(0, 5)
+      .slice(0, 10)
+      // .slice(0, 5)
       .forEach(repo => {
         // console.log(username)
         // console.log(repo.topics)
           // rep += `<a class="repo" href="${repo.html_url}" target="_blank">${repo.name}</a>`
-          document.getElementById(`${username.toLowerCase()}repos`).innerHTML += `<a class="repo ${repo.topics.join(" ")}" href="${repo.html_url}" target="_blank">${repo.name}</a>`
+          // document.getElementById(`${username.toLowerCase()}repos`).innerHTML += `<a class="repo ${repo.topics.join(" ")}" href="${repo.html_url}" target="_blank">${repo.name}</a>`
+          document.getElementById(`${username.toLowerCase()}repos`).innerHTML += `<a class="repo ${repo.topics.join(" ")}" href="${repo.html_url}" target="_blank"><p class="hidden">${repo.name}</p><img src="https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${repo.name}"></a>`
       })
       // b.innerHTML += `<td id="repos">${rep}</td></tr>`
 }
 function createUserCard(user) {
-  console.log(user)
+  // console.log(user)
   // console.log(username)
+  // const statsCard = 
+  const showGuide = true;
   b.innerHTML += `
-    <tr>
-      <td id='${user.login.toLowerCase()}repos'></td>
+    <tr class='${user.type}' id="${user.login.toLowerCase()}row">
+    <td>
+    <div id="name">
+    <a href="${user.html_url}" target="_blank">
+    <img src="${user.avatar_url}" alt="${user.name}" class="avatar image">
+    <div class="overlay">
+    <div class="text">${ user.name ? `${user.name} (${user.login})` : user.login }</div>
+    </div>
+    </a>
+    <!--<h4 class="font-bold">${user.name||user.login}</h4>-->
+    </div>
+    <div>
+    <p class="company font-bold italic">${user.company||""}</p>
+    </div>
+    </td>
+
+    <td id='${user.login.toLowerCase()}repos'></td>
+
+
       <td>
-        <div id="name">
-          <img src="${user.avatar_url}" alt="${user.name}" class="avatar">
-          <h4 class="font-bold">${user.name||user.login}</h4>
-        </div>
-        <div>
-          <p class="font-bold italic">${user.company||""}</p>
-        </div>
+      <p class="bio flex justify-center items-center text-center">${user.bio||""}</p>
+      ${user.type == "User" ? `<div class="flex justify-center items-center text-center flex-col">
+      <img class="mb-5 statsCard" src="https://github-readme-stats.vercel.app/api?username=${user.login}&count_private=true&show_icons=true&theme=tokyonight" alt="${user.name}Stats">
+      <img class="mostLang" src="https://github-readme-stats.vercel.app/api/top-langs/?username=${user.login}&layout=compact&theme=tokyonight&langs_count=10" alt="${user.name}TopLang">
+      </div>`: ""}
       </td>
-      <td>${user.bio}</td>
-      <td>${user.followers}</td>
-      <td>${user.following}</td>
-      <td>${user.public_repos}</td>
+      <td>
+      <div class="justify-center items-center text-center text-3xl flex-col w-full block">
+      <div class="bg-emerald-500 otherInfo">${showGuide ? "#PublicRepos : " : ""} ${user.public_repos}</div>
+      <div class="sep invisible">/</div>
+      <div class="bg-sky-500 otherInfo">${showGuide ? "#Followers : " : ""} ${user.followers}</div>
+      <div class="sep invisible">/</div>
+      <div class="bg-rose-500 otherInfo">${showGuide ? "#Following : " : ""} ${user.following}</div>
+      </div></td>
       </tr>
     `
     // console.log(`${user.name}repos`)
 }
 
 const myFunction = () => {
+  var foundUser = document.getElementById("foundUser")
+  foundUser.innerHTML = ""
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[1];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -95,4 +128,5 @@ const myFunction = () => {
       }
     }
   }
+  document.getElementById("foundUser") += ``
 }

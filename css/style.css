@@ -25,13 +25,13 @@ body {
   max-width: 700px;
 }
 
-.user-form input {
+input {
   width: 100%;
   display: block;
-  background-color: #4c2885;
+  background: #2a2a72;
   border: none;
   border-radius: 10px;
-  color: #fff;
+  color: red;
   padding: 1rem;
   margin-bottom: 2rem;
   font-family: inherit;
@@ -65,13 +65,6 @@ body {
   margin: 0 1.5rem;
 }
 
-.avatar {
-  border-radius: 50%;
-  border: 5px solid #2a2a72;
-  height: 60px;
-  width: 60px;
-}
-
 .user-info {
   color: #eee;
   margin-left: 2rem;
@@ -102,7 +95,7 @@ body {
 .repo {
   text-decoration: none;
   color: #fff;
-  background-color: #212a72;
+  background: rgb(99, 99, 99);
   font-size: 0.7rem;
   padding: 0.25rem 0.5rem;
   margin-right: 0.5rem;
@@ -137,24 +130,78 @@ table thead tr th, table tbody tr td {
   align-self: center !important;
   flex-flow: column;
 }
+table thead tr th {
+  background: #14b8a6;
+}
+table tbody tr .User {
+  background: #ffffff;
+}
 table tbody tr td {
   border: 3px solid black;
+  vertical-align: middle !important;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 table tbody tr td #name {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+table tbody tr td #name a .avatar {
+  border-radius: 50%;
+  border: 5px dashed salmon;
+  height: 250px;
+  transform: scale(0.8);
+  transition: all 0.75s ease-in-out;
+}
+table tbody tr td #name a .avatar:hover {
+  transform: scale(1.2) rotate(360deg);
+  border: 5px solid salmon;
+}
 table tbody tr td div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-table tbody tr td a {
-  border-radius: 50px;
+table tbody tr td div .sep {
+  background: #fef3c7;
 }
-table tbody tr td a:hover {
+table tbody tr td p.company {
+  font-size: 3em;
+  background: white;
+}
+table tbody tr td p.bio {
+  background: white;
+  margin-bottom: 5vh;
+  transition: all 0.5s ease-in-out;
+}
+table tbody tr td p.bio:hover {
+  transform: scale(2);
+  border: 5px solid black;
+}
+table tbody tr td .statsCard, table tbody tr td .mostLang {
+  transition: all 0.35s ease-in-out;
+}
+table tbody tr td .statsCard:hover, table tbody tr td .mostLang:hover {
+  transform: scale(1.6);
+}
+table tbody tr td .otherInfo {
+  transition: all 0.35s ease-in-out;
+}
+table tbody tr td .otherInfo:hover {
+  transform: scale(1.2);
+}
+table tbody tr td a.repo:hover {
   background: rgb(41, 101, 241);
+}
+table tbody tr td a.repo img {
+  transition: all 0.5s ease-in-out;
+  opacity: 0.8;
+}
+table tbody tr td a.repo img:hover {
+  transform: scale(2.2);
+  opacity: 1;
 }
 table tbody tr td .js, table tbody tr td .javascript {
   background: rgb(212, 212, 22);
@@ -176,4 +223,43 @@ table tbody tr td .scss, table tbody tr td .sass {
 table tbody tr td .python, table tbody tr td .py {
   background: rgb(75, 139, 190);
   color: rgb(255, 232, 115);
+}
+
+#name {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background: #2a2a72;
+  border-radius: 50%;
+}
+
+#name:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
