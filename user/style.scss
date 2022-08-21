@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+$bgColor : #2a2a72;
+$avatarHeight : 100px;
+$avatarBorderColor : salmon;
+$defaultRepoColor : rgb(99,99,99);
+$longdo-map : rgb(83,138,243);
+$css : rgb(38, 77, 228);
+$cssHover : rgb(41, 101, 241);
+$scss : rgb(205, 103, 153);
+$sass : $scss;
+$avatarWidth : 50%;
+
+$clazy : rgb(1,245,5);
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+$pythonC1 : rgb( 75, 139, 190);
+$pythonC2 : rgb(255, 232, 115);
+
+body {
+  background: $bgColor;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  min-height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: auto auto;
+  padding: 0;
+  flex-flow: row;
+  #head {
+    display:block;
+    flex-wrap: wrap !important;
+    // justify-content: initial;
+    // align-items: initial;
+    // text-align: center;
+    // flex-flow: column;
+    width: 100vw;
+    margin-top: 3vh;
+    img {
+      display: initial;
+      // transform: scale(0.9);
+      &.image {
+        border-radius: 50%;
+      }
+    }
+  }
+  #repo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-flow: row;
+    width: 100vw;
+    flex-wrap: wrap;
+    a.repo {
+      display: flex;
+      img {
+        max-height: 25vh;
+        max-width: 25vw;
+        transform: skewX(-5deg);
+        margin: 1vh 1vw;
+        opacity: 0.85;
+        &:hover {
+          transform: skewX(-5deg) scale(1.1);
+          opacity: 1;
+        }
+      }
+    }
+    // a.scss {
+    //   display: inline-flex;
+    // }
+  }
+}

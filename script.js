@@ -1,18 +1,22 @@
 const APIURL = 'https://api.github.com/users/'
 var user = [
     "pinghuskar",
-    "mayanth",
-    "wichaisw",
-    "ohmiler",
-    "rektplorer64"
+    // "annibuliful",
+    // "mayanth",
+    // "wichaisw",
+    // "ohmiler",
+    // "rektplorer64"
 ]
 var devil = [
     "UncleEngineer",
     "dtinth",
     "immortalgky",
     "angelabauer",
+    "thangman22",
 ]
 var official = [
+    "WISESIGHT",
+    "python-thailand",
     "BorntoDev",
     "appbrewery",
     "sitepoint",
@@ -20,7 +24,10 @@ var official = [
     "oreillymedia",
     "datacamp"
 ]
-data = [...user,...devil,...official]
+// data = [...user,...devil,...official]
+// data = [...user,...devil]
+// data = [...official]
+data = [...user]
 data = [...new Set(data)]
 data.map(getUser)
 // getUser(user)
@@ -30,9 +37,9 @@ b.innerHTML = ""
 async function getUser(username) {
     try {
         const { data } = await axios(APIURL + username)
-
         createUserCard(data)
         getRepos(username)
+        getStars(username)
     } catch(err) {
         if(err.response.status == 404) {
           console.log(err+404)
@@ -43,11 +50,27 @@ async function getUser(username) {
 async function getRepos(username) {
     try {
         const { data } = await axios(APIURL + username + '/repos?sort=created')
-
         addReposToCard(data,username)
+
     } catch(err) {
         console.log(err)
     }
+}
+async function getStars(username) {
+  try {
+    const { data } = await axios(APIURL + username + '/starred')
+    star(data,username)
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+function star(repos,username) {
+  // console.log(repos)
+  repos.slice(0, 30).forEach(repo => {
+    console.log(repo)
+    // document.getElementById(`${username.toLowerCase()}stars`).innerHTML += `${repo.full_name}<br>`
+  })
 }
 function addReposToCard(repos,username) {
   // var rep = ""
@@ -89,7 +112,7 @@ function createUserCard(user) {
     <td id='${user.login.toLowerCase()}repos'></td>
 
 
-      <td>
+      <td id='${user.login.toLowerCase()}stars'>
       <p class="bio flex justify-center items-center text-center">${user.bio||""}</p>
       ${user.type == "User" ? `<div class="flex justify-center items-center text-center flex-col">
       <img class="mb-5 statsCard" src="https://github-readme-stats.vercel.app/api?username=${user.login}&count_private=true&show_icons=true&theme=tokyonight" alt="${user.name}Stats">
@@ -110,8 +133,8 @@ function createUserCard(user) {
 }
 
 const myFunction = () => {
-  var foundUser = document.getElementById("foundUser")
-  foundUser.innerHTML = ""
+  // var foundUser = document.getElementById("foundUser")
+  // foundUser.innerHTML = ""
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");
   filter = input.value.toUpperCase();
@@ -128,5 +151,5 @@ const myFunction = () => {
       }
     }
   }
-  document.getElementById("foundUser") += ``
+  // document.getElementById("foundUser") += ``
 }
