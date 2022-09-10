@@ -99,13 +99,16 @@ function createUserCard(user) {
     <a href="${user.html_url}" target="_blank">
     <img src="${user.avatar_url}" alt="${user.name}" class="avatar image">
     <div class="overlay">
-    <div class="text">${ user.name ? `${user.name} (${user.login})` : user.login }</div>
+    <div class="text">${ user.name ? `${user.name}` : user.login }</div>
     </div>
     </a>
     <!--<h4 class="font-bold">${user.name||user.login}</h4>-->
     </div>
     <div>
     <p class="company font-bold italic">${user.company||""}</p>
+    </div>
+    <div class="ghbtns">
+    <iframe src="https://ghbtns.com/github-btn.html?user=${user.login}&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="230" height="30" title="GitHub"></iframe>
     </div>
     </td>
 
